@@ -1,0 +1,185 @@
+<PDF>
+    <Document>
+        <Author>Marco</Author>
+        <Subject>Prova di soggetto</Subject>
+        <Version>PDF_VERSION_1_7</Version>
+    </Document>
+    <Header id ="1">
+            <Width>100</Width>
+            <Content>#Page</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>BOTTOM</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>false</Enable>
+    </Header>
+    <Header id ="2">
+            <Width>100</Width>
+            <Content>Marco</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>BOTTOM</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>true</Enable>
+    </Header>
+    <Header id ="3">
+            <Width>100</Width>
+            <Content>#Chapter</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>BOTTOM</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>false</Enable>
+    </Header>
+    <Footer id ="1">
+            <Width>100</Width>
+            <Content>#Chapter</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>TOP</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>false</Enable>
+    </Footer>
+    <Footer id ="2">
+            <Width>100</Width>
+            <Content>#Chapter</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>TOP</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>false</Enable>
+    </Footer>                              
+    <Page id ="1">
+        <Size>A4</Size>
+        <BackColor>FF,FF,FF</BackColor>
+        <Margin>
+            <Left>36</Left>
+            <Right>36</Right>
+            <Top>60</Top>
+            <Bottom>180</Bottom>
+        </Margin>          
+    </Page>
+    <Chapter id="c1">
+        <BaseFont>HELVETICA</BaseFont>
+        <Style>NORMAL</Style>
+        <FontSize>18</FontSize>
+        <TextColor>00,00,00</TextColor>
+        <IndentationLeft>0</IndentationLeft>
+        <IndentationRight>0</IndentationRight>
+        <SpacingBefore>0</SpacingBefore>
+        <SpacingAfter>10</SpacingAfter>
+        <AutoNumber>true</AutoNumber>
+        <AutoNewPage>true</AutoNewPage>
+    </Chapter>
+    <Paragraph id="h1">
+        <BaseFont>HELVETICA</BaseFont>
+        <Style>NORMAL</Style>
+        <FontSize>14</FontSize>
+        <TextColor>00,00,00</TextColor>
+        <IndentationLeft>0</IndentationLeft>
+        <IndentationRight>0</IndentationRight>
+        <SpacingBefore>0</SpacingBefore>
+        <SpacingAfter>0</SpacingAfter>
+        <AutoNumber>true</AutoNumber>
+        <AutoNewPage>true</AutoNewPage> 
+    </Paragraph>
+    <Paragraph id="h2">
+        <BaseFont>HELVETICA</BaseFont>
+        <Style>NORMAL</Style>
+        <FontSize>14</FontSize>
+        <TextColor>00,00,00</TextColor>
+        <IndentationLeft>0</IndentationLeft>
+        <IndentationRight>0</IndentationRight>
+        <SpacingBefore>0</SpacingBefore>
+        <SpacingAfter>0</SpacingAfter>
+        <AutoNumber>true</AutoNumber>
+        <AutoNewPage>true</AutoNewPage> 
+    </Paragraph>    
+    <Phrase id="p1">
+        <BaseFont>HELVETICA</BaseFont>
+        <Style>NORMAL</Style>
+        <FontSize>10</FontSize>
+        <TextColor>00,00,00</TextColor>
+        <SpacingBefore>10</SpacingBefore>
+        <SpacingAfter>10</SpacingAfter>
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+        <IndentationLeft>0</IndentationLeft>
+        <IndentationRight>0</IndentationRight>   
+    </Phrase>
+    <Phrase id="p2">
+        <BaseFont>HELVETICA</BaseFont>
+        <Style>NORMAL</Style>
+        <FontSize>10</FontSize>
+        <TextColor>00,00,00</TextColor>
+        <SpacingBefore>0</SpacingBefore>
+        <SpacingAfter>0</SpacingAfter>
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+        <IndentationLeft>0</IndentationLeft>
+        <IndentationRight>0</IndentationRight>   
+    </Phrase>
+    <Image id="i1">
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+        <Border>BOX</Border>
+        <BorderWidth>1</BorderWidth>
+        <BorderColor>00,00,00</BorderColor>
+        <Description>
+            <BaseFont>HELVETICA</BaseFont>
+            <Style>NORMAL</Style>
+            <FontSize>6</FontSize>
+            <TextColor>00,00,00</TextColor>
+            <Enable>true</Enable>
+        </Description>     
+    </Image>
+    <Table id="t1">
+        <WidthPercentage>30</WidthPercentage>
+        <SpacingBefore>0</SpacingBefore>
+        <SpacingAfter>0</SpacingAfter>
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+    </Table>
+    <Cell id="ce1">
+        <BaseFont>HELVETICA</BaseFont>
+         <Style>NORMAL</Style>
+        <FontSize>10</FontSize>
+        <TextColor>ff,00,00</TextColor>
+        <BorderWidth>1</BorderWidth>
+        <BorderColor>00,00,00</BorderColor>
+        <BackGroundColor>FF,FF,FF</BackGroundColor>
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+        <VerticalAlignment>ALIGN_TOP</VerticalAlignment>        
+    </Cell>
+    <Cell id="ce2">
+        <BaseFont>HELVETICA</BaseFont>
+         <Style>NORMAL</Style>
+        <FontSize>10</FontSize>
+        <TextColor>11,11,11</TextColor>
+        <BorderWidth>1</BorderWidth>
+        <BorderColor>00,00,00</BorderColor>
+        <BackGroundColor>FF,FF,FF</BackGroundColor>
+        <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+        <VerticalAlignment>ALIGN_CENTER</VerticalAlignment>        
+    </Cell>    
+    
+     
+</PDF>
+    
+
