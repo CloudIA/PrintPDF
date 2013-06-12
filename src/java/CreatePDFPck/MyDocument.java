@@ -134,15 +134,17 @@ public class MyDocument {
     }
 
     //return 1 OK
-    //return -1 se il documento non è aperto
+    //return -1 se il documento è già aperto
     //return -2 se l'oggetto documento non è stato creato
     public int OpenDocument() {
-        if (this._MyDocument == null) {
-            return -2;
-        } else {
+        //Se il documento non è stato creato 
+        if (this._MyDocument == null) return -2;
+        else {
+            //Se il documento non era aperto
             if (!this._MyDocument.isOpen()) {
                 this._MyDocument.open();
                 return 1;
+                //Se il documento era aperto
             } else {
                 return -1;
             }
@@ -153,21 +155,31 @@ public class MyDocument {
     //return 1 OK
     //return -1 Non ho trovato l'id    
     public int AddChapter(String Text, String ID) {
-        this._NumberOfChapter++;
+       
+        //Controllo se l'ID sia presente nella lista
         for (int i = 0; i < this._MyChapterList.size(); i++) {
             if (this._MyChapterList.get(i).GetID().equals(ID)) {
+                //Incremento il numero di capitoli
+                this._NumberOfChapter++;
+                //Creo il paragrafo che andrà a comporre il capitolo
                 Paragraph TmpParagraph = new Paragraph(new Chunk(Text, FontFactory.getFont(this._MyChapterList.get(i).GetBaseFont(), this._MyChapterList.get(i).GetFontSize(), this._MyChapterList.get(i).GetStyle(), this._MyChapterList.get(i).GetTextColor())));
                 TmpParagraph.setIndentationLeft(this._MyChapterList.get(i).GetIndentationLeft());
                 TmpParagraph.setIndentationRight(this._MyChapterList.get(i).GetIndentationRight());
                 TmpParagraph.setSpacingBefore(this._MyChapterList.get(i).GetSpacingBefore());
                 TmpParagraph.setSpacingAfter(this._MyChapterList.get(i).GetSpacingAfter());
+                //Creo il capitolo dal paragrafo
                 Chapter TmpChapter = new Chapter(TmpParagraph, this._NumberOfChapter);
+                //Controllo se nella configurazione voglio il numero del capitolo vicino
                 if (!this._MyChapterList.get(i).GetNumbered()) TmpChapter.setNumberDepth(0);
-                if (!this._MyChapterList.get(i).GetNewPage()) TmpChapter.setTriggerNewPage(false);;
+                //Controllo se nella configurazione voglio il se il nuovo capitolo deve andare ad una nuova pagina
+                if (!this._MyChapterList.get(i).GetNewPage()) TmpChapter.setTriggerNewPage(false);
+                //Aggiungo il capitolo nella lista dei capitoli
                 this._ChapterList.add(TmpChapter);
+                
                 return 1;
             }
         }
+        //Se l'ID non è presente torno -1
         return -1;
     }
 
@@ -175,18 +187,23 @@ public class MyDocument {
     //return -1 Non ho trovato l'id
     //return -2 Se non ho aggiunto prima un capitolo
     public int AddParagraph(String Text, String ID) {
+        //Controllo se l'ID sia presente nella lista
         for (int i = 0; i < this._MyParagraphList.size(); i++) {
             if (this._MyParagraphList.get(i).GetID().equals(ID)) {
+                //Creo il paragrafo che andrà a comporre il paragrafo
                 Paragraph TmpParagraph = new Paragraph(new Chunk(Text, FontFactory.getFont(this._MyParagraphList.get(i).GetBaseFont(), this._MyParagraphList.get(i).GetFontSize(), this._MyParagraphList.get(i).GetStyle(), this._MyParagraphList.get(i).GetTextColor())));
                 TmpParagraph.setIndentationLeft(this._MyParagraphList.get(i).GetIndentationLeft());
                 TmpParagraph.setIndentationRight(this._MyParagraphList.get(i).GetIndentationRight());
                 TmpParagraph.setSpacingBefore(this._MyParagraphList.get(i).GetSpacingBefore());
                 TmpParagraph.setSpacingAfter(this._MyParagraphList.get(i).GetSpacingAfter());
+                //Se non sono presenti capitoli ritorno -2 e non imposto il paragrafo
                 if(this._ChapterList.isEmpty()) return -2;
+                //Aggiungo il paragrafo al capitolo
                 this._ChapterList.get(this._ChapterList.size() - 1).addSection(TmpParagraph);
                 return 1;
             }
         }
+        //Se l'ID non è presente torno -1
         return -1;
     }
     
