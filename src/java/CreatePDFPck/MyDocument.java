@@ -42,7 +42,9 @@ public class MyDocument {
     
     private int _NumberOfChapter;
 
-    public MyDocument(String Path,String FileName) {
+    //return true se configurato
+    //return false se non configurato
+    public boolean MyDocument(String Path,String FileName) {
 
         this._MyPageList = new ArrayList<>();
         this._MyChapterList = new ArrayList<>();
@@ -73,6 +75,7 @@ public class MyDocument {
         this._MyCellList = _MyConfiguration.GetMyCellList();
 
         this._NumberOfChapter = 0;
+        return _MyConfiguration.GetConfigured();
     }
 
     public Document ReturnMyDocument() {

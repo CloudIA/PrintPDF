@@ -67,12 +67,15 @@ public class MyConfiguration {
     private String _Path;
     private String _FileName;
    
+    private boolean _Configured;
     
     public MyConfiguration(String Path, String FileName) {
 
         this._FileName = FileName;
         this._Path = Path;
 
+        this._Configured=false;
+        
         this._MyPageList = new ArrayList<>();
         this._MyHeaderList = new ArrayList<>();
         this._MyFooterList = new ArrayList<>();
@@ -857,13 +860,15 @@ public class MyConfiguration {
             }
             //CELL ****************************************************
 
+            this._Configured=true;
         } catch (Exception e) {
-            e.printStackTrace();
+            this._Configured=false;
         }
 
 
         }
         else{
+            this._Configured=false;
             
         }
 
@@ -882,5 +887,7 @@ public class MyConfiguration {
     public ArrayList<MyImage> GetMyImageList()          {return this._MyImageList       ;}
     public ArrayList<MyTable> GetMyTableList()          {return this._MyTableList       ;}
     public ArrayList<MyCell> GetMyCellList()            {return this._MyCellList        ;}
+    
+    public boolean  GetConfigured()                     {return this._Configured        ;}
     
 }
