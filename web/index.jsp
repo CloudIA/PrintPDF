@@ -42,10 +42,10 @@
             _MyDocument.AddParagraph("Paragrafo ","h1");              
             _MyDocument.AddChapter("Cpitolo 3","c1");
             _MyDocument.OpenTable(7,"t1");
-            _MyDocument.AddCell("prova","ce1",2);
-            _MyDocument.AddCell("prova","ce1",2);
-            _MyDocument.AddCell("prova","ce1",2);
-            _MyDocument.AddCell("2","ce1",1);
+            _MyDocument.AddCell("prova","ce1",2,1);
+            _MyDocument.AddCell("prova","ce1",2,1);
+            _MyDocument.AddCell("prova","ce1",2,1);
+            _MyDocument.AddCell("2","ce1",1,1);
             String tmp[] = new String[7];
             tmp[0]="1";
             tmp[1]="2";

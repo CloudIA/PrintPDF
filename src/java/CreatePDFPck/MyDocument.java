@@ -44,7 +44,7 @@ public class MyDocument {
 
     //return true se configurato
     //return false se non configurato
-    public boolean MyDocument(String Path,String FileName) {
+    public MyDocument(String Path,String FileName) {
 
         this._MyPageList = new ArrayList<>();       //Lista che salva le configurazioni di pagina
         this._MyChapterList = new ArrayList<>();    //Lista che salva le configurazioni dei capitoli
@@ -82,8 +82,6 @@ public class MyDocument {
         
         this._NumberOfChapter = 0;
         
-        //Se è correttamente configurato torna true altrimenti false;
-        return _MyConfiguration.GetConfigured();
     }
 
     public Document ReturnMyDocument() {
@@ -347,61 +345,85 @@ public class MyDocument {
     //return -1 Non ho trovato l'id
     //return -2 Se non ho creato la tabella
     public int AddRow(String[] Row, String ID) {
+        //Controllo se ho creato l'oggetto tabella
         if (this._PdfPTable != null) {
+            //Controllo se l'ID sia presente nella lista 
             for (int i = 0; i < this._MyCellList.size(); i++) {
                 if (this._MyCellList.get(i).GetID().equals(ID)) {
                     //Controllo che il numero di String[] sia uguale al numero di colonne
                     if (Row.length == this._PdfPTable.getNumberOfColumns()) {
+                        //Ciclo per la lunghezza del vettore ROW che è uguale al numero di colonne
                         for (int j = 0; j < Row.length; j++) {
+                            //Creo la frase che contiene il testo della cella
                             Phrase TmpPhrase = new Phrase(new Chunk(Row[j], FontFactory.getFont(this._MyCellList.get(i).GetBaseFont(), this._MyCellList.get(i).GetFontSize(), this._MyCellList.get(i).GetStyle(), this._MyCellList.get(i).GetTextColor())));
+                            //Creo la cella
                             PdfPCell TmpPdfPCell = new PdfPCell(TmpPhrase);
                             TmpPdfPCell.setHorizontalAlignment(this._MyCellList.get(i).GetHorizontalAlignment());
                             TmpPdfPCell.setVerticalAlignment(this._MyCellList.get(i).GetVerticalAlignment());
                             TmpPdfPCell.setBorderWidth(this._MyCellList.get(i).GetBorderWidth());
                             TmpPdfPCell.setBorderColor(this._MyCellList.get(i).GetBorderColor());
                             TmpPdfPCell.setBackgroundColor(this._MyCellList.get(i).GetBackGroundColor());
+                            //Aggiungo la cella
                             this._PdfPTable.addCell(TmpPdfPCell);
                         }
                         return 1;
+                        //Se che il numero di String[] è minore al numero di colonne
+                        //Le colonne rimanenti le riempo con ""
                     } else if (Row.length < this._PdfPTable.getNumberOfColumns()) {
+                        //Ciclo per la lunghezza del vettore ROW
                         for (int j = 0; j < Row.length; j++) {
+                            //Creo la frase che contiene il testo della cella
                             Phrase TmpPhrase = new Phrase(new Chunk(Row[j], FontFactory.getFont(this._MyCellList.get(i).GetBaseFont(), this._MyCellList.get(i).GetFontSize(), this._MyCellList.get(i).GetStyle(), this._MyCellList.get(i).GetTextColor())));
+                            //Creo la cella
                             PdfPCell TmpPdfPCell = new PdfPCell(TmpPhrase);
                             TmpPdfPCell.setHorizontalAlignment(this._MyCellList.get(i).GetHorizontalAlignment());
                             TmpPdfPCell.setVerticalAlignment(this._MyCellList.get(i).GetVerticalAlignment());
                             TmpPdfPCell.setBorderWidth(this._MyCellList.get(i).GetBorderWidth());
                             TmpPdfPCell.setBorderColor(this._MyCellList.get(i).GetBorderColor());
                             TmpPdfPCell.setBackgroundColor(this._MyCellList.get(i).GetBackGroundColor());
+                            //Aggiungo la cella
                             this._PdfPTable.addCell(TmpPdfPCell);
                         }
+                        //Ciclo per NumeroDiColonne-Row.lenght
                         for (int j = 0; j < (this._PdfPTable.getNumberOfColumns() - Row.length); j++) {
+                            //Creo la frase che contiene il testo della cella in questo caso ""
                             Phrase TmpPhrase = new Phrase(new Chunk("", FontFactory.getFont(this._MyCellList.get(i).GetBaseFont(), this._MyCellList.get(i).GetFontSize(), this._MyCellList.get(i).GetStyle(), this._MyCellList.get(i).GetTextColor())));
+                            //Creo la cella
                             PdfPCell TmpPdfPCell = new PdfPCell(TmpPhrase);
                             TmpPdfPCell.setHorizontalAlignment(this._MyCellList.get(i).GetHorizontalAlignment());
                             TmpPdfPCell.setVerticalAlignment(this._MyCellList.get(i).GetVerticalAlignment());
                             TmpPdfPCell.setBorderWidth(this._MyCellList.get(i).GetBorderWidth());
                             TmpPdfPCell.setBorderColor(this._MyCellList.get(i).GetBorderColor());
                             TmpPdfPCell.setBackgroundColor(this._MyCellList.get(i).GetBackGroundColor());
+                            //Aggiungo la cella
                             this._PdfPTable.addCell(TmpPdfPCell);
                         }
                         return 2;
+                        //Se che il numero di String[] è magiore al numero di colonne
+                        //Le stringhe rimanenti le taglio
                     } else if (Row.length > this._PdfPTable.getNumberOfColumns()) {
+                        //Ciclo per NumeroDiColonne
                         for (int j = 0; j < this._PdfPTable.getNumberOfColumns(); j++) {
+                            //Creo la frase che contiene il testo della cella
                             Phrase TmpPhrase = new Phrase(new Chunk(Row[j], FontFactory.getFont(this._MyCellList.get(i).GetBaseFont(), this._MyCellList.get(i).GetFontSize(), this._MyCellList.get(i).GetStyle(), this._MyCellList.get(i).GetTextColor())));
+                            //Creo la cella
                             PdfPCell TmpPdfPCell = new PdfPCell(TmpPhrase);
                             TmpPdfPCell.setHorizontalAlignment(this._MyCellList.get(i).GetHorizontalAlignment());
                             TmpPdfPCell.setVerticalAlignment(this._MyCellList.get(i).GetVerticalAlignment());
                             TmpPdfPCell.setBorderWidth(this._MyCellList.get(i).GetBorderWidth());
                             TmpPdfPCell.setBorderColor(this._MyCellList.get(i).GetBorderColor());
                             TmpPdfPCell.setBackgroundColor(this._MyCellList.get(i).GetBackGroundColor());
+                            //Aggiungo la cella
                             this._PdfPTable.addCell(TmpPdfPCell);
                         }
                         return 3;
                     }
                 }
             }
+            //Se l'ID non è presente
             return -1;
 
+            //Se non è stato creato l'oggetto tabella
         } else {
             return -2;
         }
@@ -412,25 +434,35 @@ public class MyDocument {
     //return 1 OK
     //return -1 Non ho trovato l'id
     //return -2 Se non ho creato la tabella    
-    public int AddCell(String Text, String ID, int colspan) {
+    public int AddCell(String Text, String ID, int colspan, int rowspan) {
+        //Controllo se è stato creato l'oggetto tabella
         if (this._PdfPTable != null) {
+            //Controllo se l'ID sia presente nella lista 
             for (int i = 0; i < this._MyCellList.size(); i++) {
                 if (this._MyCellList.get(i).GetID().equals(ID)) {
+                    //Creo la frase che verrà contenuta nella cella
                     Phrase TmpPhrase = new Phrase(new Chunk(Text, FontFactory.getFont(this._MyCellList.get(i).GetBaseFont(), this._MyCellList.get(i).GetFontSize(), this._MyCellList.get(i).GetStyle(), this._MyCellList.get(i).GetTextColor())));
+                    //Creo la cella
                     PdfPCell TmpPdfPCell = new PdfPCell(TmpPhrase);
+                    //Imposto quante colonne deve contenere la cella
                     TmpPdfPCell.setColspan(colspan);
+                    //Imposto quante righe deve contenere la cella
+                    TmpPdfPCell.setRowspan(rowspan);
                     TmpPdfPCell.setHorizontalAlignment(this._MyCellList.get(i).GetHorizontalAlignment());
                     TmpPdfPCell.setVerticalAlignment(this._MyCellList.get(i).GetVerticalAlignment());
                     TmpPdfPCell.setBorderWidth(this._MyCellList.get(i).GetBorderWidth());
                     TmpPdfPCell.setBorderColor(this._MyCellList.get(i).GetBorderColor());
                     TmpPdfPCell.setBackgroundColor(this._MyCellList.get(i).GetBackGroundColor());
+                    //Aggiungo la cella alla tabella
                     this._PdfPTable.addCell(TmpPdfPCell);
                     return 1;
                 }
             }
+            //Se l'ID non è presente
             return -1;
 
         }
+        //Se non è stato creato l'ogetto tabella
         else{
             return -2;
         }
@@ -442,20 +474,24 @@ public class MyDocument {
     //return -2 Se non ho creato la tabella     
     //return -10 Se c'è stato un errore con il documento  
     public int CloseTable() {
-
+        //Controllo se è stato creato l'oggetto tabella
         if (this._PdfPTable != null) {
+            //Se non esistono Capitoli
             if (this._ChapterList.isEmpty()) {
                 try {
+                    //Aggiungo la tabella al documento
                     this._MyDocument.add(_PdfPTable);
                     return 1;
+                    //Se non è stato creato o aperto il docuemento
                 } catch (DocumentException ex) {
                     return -10;
                 }
+                //Aggiungo la tabella all'ultimo capitolo
             } else {
                 this._ChapterList.get(this._ChapterList.size() - 1).add(this._PdfPTable);
                 return 1;
             }
-
+            //Se non è stato creato l'ogetto tabella
         } else {
             return -2;
         }
@@ -467,20 +503,27 @@ public class MyDocument {
     //return -10 Se c'è stato un errore nel documento
     //return -2 Se l'oggetto documento non è creato
     public int CloseDocument() {
+        //Controllo se il documento è stato creato
         if (this._MyDocument != null) {
+            //Ciclo per il numero di capitoli
             for (int i = 0; i < this._ChapterList.size(); i++) {
                 try {
+                    //Aggiungo i capitoli al documento
                     this._MyDocument.add(this._ChapterList.get(i));
+                    //Se ci sono problemi perchè il documento non è stato aperto
                 } catch (DocumentException ex) {
                     return -10;
                 }
             }
+            //Se il docuemnto è aperto lo chiudo
             if (this._MyDocument.isOpen()) {
                 this._MyDocument.close();
                 return 1;
+                //Se il documento non è aperto
             } else {
                 return -1;
             }
+            //Se il documento non è stato creato
         } else {
             return -2;
 
