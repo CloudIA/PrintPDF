@@ -179,7 +179,7 @@ public class MyDocument {
                 return 1;
             }
         }
-        //Se l'ID non è presente torno -1
+        //Se l'ID non è presente
         return -1;
     }
 
@@ -203,7 +203,7 @@ public class MyDocument {
                 return 1;
             }
         }
-        //Se l'ID non è presente torno -1
+        //Se l'ID non è presente
         return -1;
     }
     
@@ -211,24 +211,30 @@ public class MyDocument {
     //return -1 Non ho trovato l'id
     //return -10 Se c'è stato un errore con il documento
     public int AddPhrase(String Text, String ID) {
+        //Controllo se l'ID sia presente nella lista        
         for (int i = 0; i < this._MyPhraseList.size(); i++) {
             if (this._MyPhraseList.get(i).GetID().equals(ID)) {
+                //Creo la stringa che contiene il testo
                 Chunk TmpChunk = new Chunk(Text, FontFactory.getFont(this._MyPhraseList.get(i).GetBaseFont(), this._MyPhraseList.get(i).GetFontSize(), this._MyPhraseList.get(i).GetStyle(), this._MyPhraseList.get(i).GetTextColor()));
                 Paragraph TmpParagraph = new Paragraph(TmpChunk);
                 TmpParagraph.setAlignment(this._MyPhraseList.get(i).GetHorizontalAlignment());
                 TmpParagraph.setSpacingBefore(this._MyPhraseList.get(i).GetSpacingBefore());
                 TmpParagraph.setSpacingAfter(this._MyPhraseList.get(i).GetSpacingAfter());
+                //Se non ci sono capitoli lo aggiungo alla pagina
                 if (this._ChapterList.isEmpty()) {
                     try {
                         this._MyDocument.add(TmpChunk);
+                        //Se non ho creato il documento oppure questo non è aperto
                     } catch (DocumentException ex) {
                         return -10;
                     }
                 }
+                //Se ci sono capitoli lo aggiungo all'ultimo capitolo
                 else this._ChapterList.get(this._ChapterList.size() - 1).add(TmpParagraph);
                 return 1;
             }
         }
+        //Se l'ID non è presente
         return -1;
     }
 
@@ -238,19 +244,25 @@ public class MyDocument {
     //return -11 se c'è stato un errore con l'immagine
     //return -12 se il docuemnto oggetto non è stato creato
     public int AddImage(String URL, String ID, String Text) {
-
+        //Controllo se ho creato il documento
         if (this._MyDocument != null) {
+            //Controllo se l'ID sia presente nella lista     
             for (int i = 0; i < this._MyImageList.size(); i++) {
                 if (this._MyImageList.get(i).GetID().equals(ID)) {
                     try {
+                        //Creo l'oggetto immagine dall'url
                         Image TmpImage = Image.getInstance(URL);
+                        //Creo il paragrafo che inserisco a pié di immagine
                         Paragraph paragraph = new Paragraph();
 
+                        //Se è presente il testo lo aggiungo al paragraph
                         if (!"".equals(Text)) {
                             paragraph.add(Text);
 
                         }
 
+                        //Controllo se l'immagine è più grande della pagina, se si
+                        //cerco la dimensione maggiore e la scalo
                         float ImageHeight = TmpImage.getHeight();
                         float ImageWidth = TmpImage.getWidth();
 
@@ -269,7 +281,8 @@ public class MyDocument {
                             }
 
                         }
-
+                        
+                        //Imposto le varie configurazioni dell'immagine, l'allineamento, i bordi, il colore e la dimensione dei bordi, il font della didascalia
                         TmpImage.setAlignment(this._MyImageList.get(i).GetHorizontalAlignment());
                         TmpImage.setBorder(this._MyImageList.get(i).GetBorder());
                         TmpImage.setBorderColor(this._MyImageList.get(i).GetBorderColor());
@@ -277,28 +290,32 @@ public class MyDocument {
                         paragraph.setFont(FontFactory.getFont(this._MyImageList.get(i).GetBaseFont(), this._MyImageList.get(i).GetFontSize(), this._MyImageList.get(i).GetStyle(), this._MyImageList.get(i).GetTextColor()));
                         paragraph.setAlignment(this._MyImageList.get(i).GetHorizontalAlignment());
 
-
+                        //Se non è presente alcun capitolo
                         if (this._ChapterList.isEmpty()) {
                             try {
+                                //Aggiungo l'immagine e la didascalia
                                 this._MyDocument.add(TmpImage);
                                 this._MyDocument.add(paragraph);
+                                //Se il caricamento dell'immagine genera un eccezione
                             } catch (DocumentException ex) {
                                 return -10;
                             }
+                            //Se è presente un capitolo aggiungo l'immagine e la didascalia all'ultimo capitolo
                         } else {
                             this._ChapterList.get(this._ChapterList.size() - 1).add(TmpImage);
                             this._ChapterList.get(this._ChapterList.size() - 1).add(paragraph);
                         }
 
                         return 1;
-
+                        //Se ci sono stati dei problemi a creare l'elemento Image
                     } catch (BadElementException | IOException ex) {
                         return -11;
                     }
                 }
             }
-
+            //Se l'ID non è presente
             return -1;
+            //Se non esiste l'elemento Docuement
         } else {
             return -12;
         }
@@ -307,9 +324,12 @@ public class MyDocument {
     //return 1 OK
     //return -1 Non ho trovato l'id
     public int OpenTable(int Column, String ID){
-        this._PdfPTable= new PdfPTable(Column);
+        //Controllo se l'ID sia presente nella lista 
         for (int i = 0; i < this._MyTableList.size(); i++) {
             if (this._MyTableList.get(i).GetID().equals(ID)) {
+                //Creo la tabella con il numero di colonne inpostato
+                this._PdfPTable= new PdfPTable(Column);
+                //Imposto i parametri della tabella
                 this._PdfPTable.setWidthPercentage(this._MyTableList.get(i).GetWidthPercentage());
                 this._PdfPTable.setSpacingBefore(this._MyTableList.get(i).GetSpacingBefore());
                 this._PdfPTable.setSpacingAfter(this._MyTableList.get(i).GetSpacingAfter());
@@ -317,6 +337,7 @@ public class MyDocument {
                 return 1;
             }   
         }
+        //Se l'ID non è presente
         return -1;
     }
     
