@@ -46,24 +46,29 @@ public class MyDocument {
     //return false se non configurato
     public boolean MyDocument(String Path,String FileName) {
 
-        this._MyPageList = new ArrayList<>();
-        this._MyChapterList = new ArrayList<>();
-        this._MyParagraphList = new ArrayList<>();
-        this._MyPhraseList = new ArrayList<>();
-        this._MyHeaderList = new ArrayList<>();
-        this._MyFooterList = new ArrayList<>();
-        this._MyImageList = new ArrayList<>();
-        this._MyTableList = new ArrayList<>();
-        this._MyCellList = new ArrayList<>();
+        this._MyPageList = new ArrayList<>();       //Lista che salva le configurazioni di pagina
+        this._MyChapterList = new ArrayList<>();    //Lista che salva le configurazioni dei capitoli
+        this._MyParagraphList = new ArrayList<>();  //Lista che salva le configurazione dei paragrafi
+        this._MyPhraseList = new ArrayList<>();     //Lista che salva le configurazioni delle frasi
+        this._MyHeaderList = new ArrayList<>();     //Lista che salva le configurazioni degli header
+        this._MyFooterList = new ArrayList<>();     //Lista che salva le configurazioni dei footer 
+        this._MyImageList = new ArrayList<>();      //Lista che salva le configurazioni delle immagini
+        this._MyTableList = new ArrayList<>();      //Lista che salva le configurazioni delle tabelle
+        this._MyCellList = new ArrayList<>();       //Lista che salva le configurazioni delle celle delle tabelle
         
-        this._ChapterList = new ArrayList<>();
+        this._ChapterList = new ArrayList<>();      //Lista che salva i Capitoli
         
+        //CARICO LA CONFIGURAZIONE DAL FILE*************************************************************************
         MyConfiguration _MyConfiguration = new MyConfiguration(Path,FileName);
-
+        //CARICO LA CONFIGURAZIONE DAL FILE*************************************************************************
+        
+        //Imposto le variabile del documento*******************************************************************
         this._Author = _MyConfiguration.GetAuthor();
         this._Subject = _MyConfiguration.GetSubject();
         this._Version = _MyConfiguration.GetVersion();
-
+        //Imposto le variabile del documento*******************************************************************
+        
+        //Imposto le variabili delle pagine, dei capitoli.... *************************************************
         this._MyPageList = _MyConfiguration.GetMyPageList();
         this._MyChapterList = _MyConfiguration.GetMyChapterList();
         this._MyParagraphList = _MyConfiguration.GetMyParagraphList();
@@ -73,8 +78,11 @@ public class MyDocument {
         this._MyImageList = _MyConfiguration.GetMyImageList();
         this._MyTableList = _MyConfiguration.GetMyTableList();
         this._MyCellList = _MyConfiguration.GetMyCellList();
-
+        //Imposto le variabili delle pagine, dei capitoli.... *************************************************
+        
         this._NumberOfChapter = 0;
+        
+        //Se è correttamente configurato torna true altrimenti false;
         return _MyConfiguration.GetConfigured();
     }
 
@@ -86,15 +94,23 @@ public class MyDocument {
     //return -10 se ci sono problemi con il file
     public int CreateDocument(String Path, String FileName) {
         try {
+            //Creo il documento
             this._MyDocument = new Document(this._MyPageList.get(0).GetSize(), this._MyPageList.get(0).GetMarginLeft(), this._MyPageList.get(0).GetMarginRight(), this._MyPageList.get(0).GetMarginTop(), this._MyPageList.get(0).GetMarginBottom());
+            //Imposto l'autore
             this._MyDocument.addAuthor(this._Author);
+            //Imposto il creatore :)
             this._MyDocument.addCreator(this._Author);
+            //Imposto il titolo
             this._MyDocument.addSubject(this._Subject);
+            //Creo lo stream di scrittura
             this._PdfWriter = PdfWriter.getInstance(_MyDocument, new FileOutputStream(Path + FileName));
+            //Imposto la versione del pdf
             this._PdfWriter.setPdfVersion(this._Version);
+            
             return 1;
 
         } catch (FileNotFoundException | DocumentException ex) {
+            //Se non riesco ad aprire il file
             return -10;
         }
     }
