@@ -27,25 +27,27 @@
     </head>
     <body>
         <%
-            MyDocument _MyDocument = new MyDocument("/home/marco/","PDF_Config.xml");
-            _MyDocument.CreateDocument("/home/marco/glassfish3/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/", "prova.pdf");
-            _MyDocument.SetHeaderFooter();
-            _MyDocument.OpenDocument();
-            _MyDocument.AddChapter("Capitolo", "c1");
-            _MyDocument.AddParagraph("Paragrafo ","h1");
-            _MyDocument.AddParagraph("Paragrafo ","h1");
-            _MyDocument.AddParagraph("Paragrafo ","h1");            
-            _MyDocument.AddChapter("Capitolo","c1");
-            _MyDocument.AddParagraph("Paragrafo","h1");
-            _MyDocument.AddPhrase("Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "p1");
-            _MyDocument.AddParagraph("Paragrafo ","h1");
-            _MyDocument.AddParagraph("Paragrafo ","h1");              
-            _MyDocument.AddChapter("Cpitolo 3","c1");
-            _MyDocument.OpenTable(7,"t1");
-            _MyDocument.AddCell("prova","ce1",2,1);
-            _MyDocument.AddCell("prova","ce1",2,1);
-            _MyDocument.AddCell("prova","ce1",2,1);
-            _MyDocument.AddCell("2","ce1",1,1);
+            int result;
+            MyDocument _MyDocument = new MyDocument("/home/marco/glassfish-4.0/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/","PDF_Config.xml");
+            result = _MyDocument.CreateDocument("/home/marco/glassfish-4.0/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/", "prova.pdf");
+            out.print("<br>CreateDocument=" + result); 
+            result = _MyDocument.SetHeaderFooter();
+            result = _MyDocument.OpenDocument();
+            result = _MyDocument.AddChapter("Capitolo", "c1");
+            result = _MyDocument.AddParagraph("Paragrafo ","h1");
+            result = _MyDocument.AddParagraph("Paragrafo ","h1");
+            result = _MyDocument.AddParagraph("Paragrafo ","h1");            
+            result = _MyDocument.AddChapter("Capitolo","c1");
+            result = _MyDocument.AddParagraph("Paragrafo","h1");
+            result = _MyDocument.AddPhrase("Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "p1");
+            result = _MyDocument.AddParagraph("Paragrafo ","h1");
+            result = _MyDocument.AddParagraph("Paragrafo ","h1");              
+            result = _MyDocument.AddChapter("Cpitolo 3","c1");
+            result = _MyDocument.OpenTable(7,"t1");
+            result = _MyDocument.AddCell("prova","ce1",2,1);
+            result = _MyDocument.AddCell("prova","ce1",2,1);
+            result = _MyDocument.AddCell("prova","ce1",2,1);
+            result = _MyDocument.AddCell("2","ce1",1,1);
             String tmp[] = new String[7];
             tmp[0]="1";
             tmp[1]="2";

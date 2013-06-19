@@ -15,7 +15,7 @@
             <BaseFont>TIMES_ROMAN</BaseFont>
             <Style>NORMAL</Style>
             <TextColor>00,00,00</TextColor>
-            <Enable>false</Enable>
+            <Enable>true</Enable>
     </Header>
     <Header id ="2">
             <Width>100</Width>
@@ -41,7 +41,7 @@
             <BaseFont>TIMES_ROMAN</BaseFont>
             <Style>NORMAL</Style>
             <TextColor>00,00,00</TextColor>
-            <Enable>false</Enable>
+            <Enable>true</Enable>
     </Header>
     <Footer id ="1">
             <Width>100</Width>

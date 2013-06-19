@@ -97,6 +97,7 @@ public class MyConfiguration {
 
             DocumentBuilder builder = documentFactory.newDocumentBuilder();
             Document document = (Document) builder.parse(this._ConfigFile);
+            
 
             //DOCUMENT ****************************************************
             NodeList NodeListDocument = document.getElementsByTagName("Document");

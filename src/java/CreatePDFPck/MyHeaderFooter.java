@@ -374,7 +374,6 @@ public class MyHeaderFooter extends PdfPageEventHelper {
                             HeaderTable.addCell(Image.getInstance(TmpString[1])); //Inserisci il testo nella cella 3
                         } catch (BadElementException | IOException ex) {
                         }
-
                     } else {
                         HeaderTable.addCell(new Phrase(18, new Chunk(this._MyHeaderItemList.get(i).GetContent(), FontFactory.getFont(this._MyHeaderItemList.get(i).GetBaseFont(), this._MyHeaderItemList.get(i).GetFontSize(), this._MyHeaderItemList.get(i).GetStyle(), this._MyHeaderItemList.get(i).GetBaseColor()))));
 
