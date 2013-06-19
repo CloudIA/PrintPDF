@@ -213,7 +213,7 @@ public class MyHeaderFooter extends PdfPageEventHelper {
     private void SetHeader(PdfWriter writer, Document document) {
 
         //Controllo quante colonne deve contenere l'header***********************************
-        int ColumnDimension = 0;
+        int ColumnDimension = 1;
         for (int i = 0; i < this._MyHeaderItemList.size(); i++) {
             if (this._MyHeaderItemList.get(i).GetEnable()) {
                 //Se è presente un tag in Content Che contiene la stringa #Page allora aumento il numero di colonne

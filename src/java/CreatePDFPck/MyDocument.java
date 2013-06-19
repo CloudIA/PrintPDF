@@ -507,9 +507,12 @@ public class MyDocument {
         if (this._MyDocument != null) {
             //Ciclo per il numero di capitoli
             for (int i = 0; i < this._ChapterList.size(); i++) {
+
                 try {
+                    
                     //Aggiungo i capitoli al documento
                     this._MyDocument.add(this._ChapterList.get(i));
+                    
                     //Se ci sono problemi perchè il documento non è stato aperto
                 } catch (DocumentException ex) {
                     return -10;

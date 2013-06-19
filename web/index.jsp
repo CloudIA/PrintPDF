@@ -28,8 +28,8 @@
     <body>
         <%
             int result;
-            MyDocument _MyDocument = new MyDocument("/home/marco/glassfish-4.0/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/","PDF_Config.xml");
-            result = _MyDocument.CreateDocument("/home/marco/glassfish-4.0/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/", "prova.pdf");
+            MyDocument _MyDocument = new MyDocument("/home/marco/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/","PDF_Config.xml");
+            result = _MyDocument.CreateDocument("/home/marco/glassfish4/glassfish/domains/CloudIA/applications/CloudIA_PrintPDF/", "prova.pdf");
             out.print("<br>CreateDocument=" + result); 
             result = _MyDocument.SetHeaderFooter();
             out.print("<br>SetHeaderFooter=" + result); 
