@@ -43,6 +43,19 @@
             <TextColor>00,00,00</TextColor>
             <Enable>true</Enable>
     </Header>
+    <Header id ="4">
+            <Width>100</Width>
+            <Content>#Image /home/marco/BATMAN.png</Content>
+            <HorizontalAlignment>ALIGN_CENTER</HorizontalAlignment>
+            <VerticalAlignment>ALIGN_MIDDLE</VerticalAlignment>
+            <Border>BOTTOM</Border>
+            <Height>30</Height>
+            <FontSize>16</FontSize>
+            <BaseFont>TIMES_ROMAN</BaseFont>
+            <Style>NORMAL</Style>
+            <TextColor>00,00,00</TextColor>
+            <Enable>true</Enable>
+    </Header>    
     <Footer id ="1">
             <Width>100</Width>
             <Content>#Chapter</Content>
